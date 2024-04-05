@@ -165,7 +165,7 @@ code {
   font-family: monospace;
   display: block;
   color: #000000;
-
+  font-size: clamp(1.5rem, 2.36vw, 1.7rem);
 }
 
 .readmore__switch {
