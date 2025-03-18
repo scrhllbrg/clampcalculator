@@ -20,7 +20,7 @@ body {
 h1 {
   text-align: center;
   margin: clamp(3rem, 8.33vw, 6rem) auto 0 auto;
-  max-width: clamp(280px, 55.56vw, 400px);
+  max-width: clamp(280px, 83.33vw, 600px);
   font-size: clamp(22px, 5.56vw, 40px);
   font-weight: 400;
   color: #000000;
@@ -180,6 +180,12 @@ h2 {
   margin-top: clamp(0.9rem, 1.53vw, 1.1rem);
 }
 
+h3 {
+  font-size: clamp(1.6rem, 2.64vw, 1.9rem);
+  font-weight: 500;
+  margin-top: clamp(0.9rem, 1.53vw, 1.1rem);
+}
+
 code {
   background-color: var(--mellow-yellow);
   padding: 20px;
@@ -205,6 +211,16 @@ code {
 
 .readmore__open .readmore__content {
   display: block;
+}
+
+.readmore__content a {
+  color: #ffffff;
+}
+
+.readmore__content li {
+  list-style: disc;
+  margin: clamp(0.5rem, 1.39vw, 1rem);
+  list-style-position: inside;
 }
 
 .faux__select {
@@ -265,3 +281,7 @@ code {
   margin-right: clamp(10px, 2.78vw, 20px);
 }
 
+img {
+  height: auto;
+  max-width: 100%;
+}

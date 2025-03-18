@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem('breakpoint', breakpoint);
       breakpointInput.value = breakpoint;
       fauxSelectTrigger.textContent = name; // Update button text
+      fauxSelect.classList.remove('faux__select__open');
       calculateOutput();
   }
 
