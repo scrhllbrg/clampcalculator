@@ -74,6 +74,11 @@ button#reset-max-value {
   border: 2px solid var(--mellow-purple);
 }
 
+button#copy-result:active,
+button#copy-result:focus {
+  outline: 4px dotted var(--mellow-yellow);
+}
+
 button:hover {
   cursor: pointer;
 }
@@ -83,8 +88,11 @@ input:focus,
 select:active,
 select:focus,
 button:active,
-button:focus {
+button:focus,
+.readmore__switch:active,
+.readmore__switch:focus {
   outline: 2px dotted var(--mellow-yellow);
+  outline-offset: clamp(3px, 0.83vw, 6px);
 }
 
 .form-group__max-value button {
