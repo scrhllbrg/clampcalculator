@@ -39,6 +39,9 @@ body {
 ## Local Storage
 This clamp generator/calculator utilizes local storage to store the Breakpoint and Unit.
 
+## Presets
+Presets can be stored to local storage, and loaded or removed from it.
+
 ## About This Tool
 The designer provides designs for desktop and mobile devices only. That is fine these days. Just use CSS clamp to scale the items to fit the various screen sizes. Gone are the numerous @media queries at seemingly random places.
 
