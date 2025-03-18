@@ -6,7 +6,6 @@
     <meta name="description" content="Use the Clamp Calculator to dynamically calculate and generate CSS clamp values for responsive design. Perfect for setting scalable sizes, margins and paddings.">
     <meta name="keywords" content="CSS Clamp, Clamp Calculator, Clamp Generator, Responsive Design, Web Development">
     <meta name="author" content="Happiness">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css?v=1.4">
     <link rel="stylesheet" href="clampcalculator.css?v=1.47">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -37,7 +36,39 @@
         <div class="form-group form-group__breakpoint">
           <div class="form-item">
             <label for="breakpoint">Breakpoint (in px):</label>
-            <input type="number" id="breakpoint" name="breakpoint"  min="320" max="10000" value="1640">
+            <input type="number" id="breakpoint" name="breakpoint" min="320" max="10000" value="1640">
+          </div>
+          <div class="form-item">
+            <label for="breakpoint__list">Breakpoint preset:</label>
+            <div id="breakpoint__list" class="faux__select">
+              <button class="faux__select__trigger">None</button>
+              <div class="faux__select__form">
+                <ul class="faux__select__list">
+                  <li class="faux__select__item faux__select__item__placeholder" data-breakpoint="1">
+                    No items added
+                  </li>
+                  <!-- <li class="faux__select__item" data-breakpoint="100">
+                    Kund1 - 100px <button class="faux__select__item__remove">Remove</button>
+                  </li>
+                  <li class="faux__select__item" data-breakpoint="1000">
+                    Kund2 - 1000px <button class="faux__select__item__remove">Remove</button>
+                  </li> -->
+                </ul>
+                <div class="breakpoint__list__add">
+                  <div class="breakpoint__list__add__formitem">
+                    <label for="breakpoint__name">Project name:</label>
+                    <input type="text" id="breakpoint__name" name="breakpoint__name">
+                  </div>
+                  <div class="breakpoint__list__add__formitem">
+                    <label for="breakpoint__value">Breakpoint (in px):</label>
+                    <input type="number" id="breakpoint__value" name="breakpoint__value" min="320" max="10000">
+                  </div>
+                  <div class="breakpoint__list__add__formitem">
+                    <button class="btn_small">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group form-group__max-value">
@@ -68,52 +99,56 @@
           </div>
         </div>
         <div class="readmore">
-          <div class="readmore__switch" tabindex="0">Usage &rarr;</div>
-          <div class="readmore__content">
-            <h2>Breakpoint</h2>
-            <p>The width of the viewport where you want the max value to be applied.</p>
+            <div class="readmore__switch" tabindex="0">Usage →</div>
+            <div class="readmore__content">
+              <h2>Breakpoint</h2>
+              <p>The width of the viewport where you want the max value to be applied.</p>
 
-            <h2>Max Value of Clamp</h2>
-            <p>The maximum size, padding, margin, etc. This will be used to determine the value for the dynamic (vw) value of the clamp in relation to the breakpoint.</p>
-            <p>Please select the appropriate unit.</p>
+              <h2>Max Value of Clamp</h2>
+              <p>The maximum size, padding, margin, etc. This will be used to determine the value for the dynamic (vw) value of the clamp in relation to the breakpoint.</p>
+              <p>Please select the appropriate unit.</p>
 
-            <h2>Min Value of Clamp</h2>
-            <p>This calculation does not take into account any minimum values for the clamp.</p>
+              <h2>Min Value of Clamp</h2>
+              <p>This calculation does not take into account any minimum values for the clamp.</p>
 
-            <h2>New Max Value</h2>
-            <p>Remove the previously entered max value and immediately start typing/pasting your new max value. The result will be automatically updated as you type. (Whenever in doubt, press the button that says "Calculate".)</p>
+              <h2>New Max Value</h2>
+              <p>Remove the previously entered max value and immediately start typing/pasting your new max value. The result will be automatically updated as you type. (Whenever in doubt, press the button that says "Calculate".)</p>
 
-            <h2>Result</h2>
-            <p>The calculated dynamic mid-value of the clamp in vw. The MINVALUE and MAXVALUE should be defined statically in px/rem.</p>
-            <code>
-            padding: clamp(MINVALUE, RESULT, MAXVALUE);
-            </code>
+              <h2>Result</h2>
+              <p>The calculated dynamic mid-value of the clamp in vw. The MINVALUE and MAXVALUE should be defined statically in px/rem.</p>
+              <code>
+              padding: clamp(MINVALUE, RESULT, MAXVALUE);
+              </code>
 
-            <h2>Copy Button</h2>
-            <p>Copies just what you need to quickly paste the dynamic value into your IDE of choice.</p>
+              <h2>Copy Button</h2>
+              <p>Copies just what you need to quickly paste the dynamic value into your IDE of choice.</p>
 
-            <h2>Rem Units</h2>
-            <p>Assumes the value of rem is set to be 10% of the px size.</p>
+              <h2>Rem Units</h2>
+              <p>Assumes the value of rem is set to be 10% of the px size.</p>
 
-            <code>
-            html {<br>
-            &nbsp;&nbsp;font-size: 62.5%;<br>
-            &nbsp;&nbsp;position: relative;<br>
-            }<br>
-            <br>
-            body {<br>
-            &nbsp;&nbsp;font-size: 1.6rem;<br>
-            }
-            </code>
+              <code>
+              html {<br>
+              &nbsp;&nbsp;font-size: 62.5%;<br>
+              &nbsp;&nbsp;position: relative;<br>
+              }<br>
+              <br>
+              body {<br>
+              &nbsp;&nbsp;font-size: 1.6rem;<br>
+              }
+              </code>
 
-            <h2>Local Storage</h2>
-            <p>This clamp generator/calculator utilizes local storage to store the Breakpoint and Unit.</p>
+              <h2>Local Storage</h2>
+              <p>This clamp generator/calculator utilizes local storage to store the Breakpoint and Unit.</p>
 
-            <h2>About This Tool</h2>
-            <p>The designer provides designs for desktop and mobile devices only. That is fine these days. Just use CSS clamp to scale the items to fit the various screen sizes. Gone are the numerous @media queries at seemingly random places.</p>
-            <p>This generator/calculator is as simplified as possible. Ease of use and good workflow are of essence. It assumes you already have the max and min values in place and want to get the dynamic value from the max value to smoothly scale the content.</p>
-            <p>The idea is to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.</p>
+              <h2>Presets</h2>
+              <p>Presets can be stored to local storage, and loaded or removed from it.</p>
 
+              <h2>About This Tool</h2>
+              <p>The designer provides designs for desktop and mobile devices only. That is fine these days. Just use CSS clamp to scale the items to fit the various screen sizes. Gone are the numerous @media queries at seemingly random places.</p>
+              <p>This generator/calculator is as simplified as possible. Ease of use and good workflow are of essence. It assumes you already have the max and min values in place and want to get the dynamic value from the max value to smoothly scale the content.</p>
+              <p>The idea is to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.</p>
+
+          </div>
         </div>
       </div>
     </main>

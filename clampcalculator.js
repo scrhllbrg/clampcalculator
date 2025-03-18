@@ -7,6 +7,115 @@ document.addEventListener('DOMContentLoaded', function() {
   const outputDiv = document.getElementById('output');
   const copyButton = document.getElementById('copy-result');
   const resultWrapper = document.getElementById('result-wrapper');
+  const fauxSelect = document.getElementById('breakpoint__list');
+  const fauxSelectTrigger = document.querySelector('.faux__select__trigger');
+  const fauxSelectList = document.querySelector('.faux__select__list');
+  const fauxSelectPlaceholder = document.querySelector('.faux__select__item__placeholder');
+  const addButton = document.querySelector('.btn_small');
+  const breakpointNameInput = document.getElementById('breakpoint__name');
+  const breakpointValueInput = document.getElementById('breakpoint__value');
+
+  // Toggle faux select dropdown
+  fauxSelectTrigger.addEventListener('click', function() {
+    fauxSelect.classList.toggle('faux__select__open');
+  });
+
+  // Load breakpoint presets from localStorage
+  function loadBreakpoints() {
+      let breakpoints = JSON.parse(localStorage.getItem('breakpoint_presets')) || [];
+
+      // Remove all existing <li> elements in the list
+      fauxSelectList.innerHTML = '';
+
+      if (breakpoints.length === 0) {
+          fauxSelectPlaceholder.classList.remove('is__hidden');
+          fauxSelectList.appendChild(fauxSelectPlaceholder);
+          fauxSelectTrigger.textContent = 'None'; // Reset button text when no presets exist
+      } else {
+          fauxSelectPlaceholder.classList.add('is__hidden');
+          breakpoints.forEach(({ name, breakpoint }) => {
+              const li = document.createElement('li');
+              li.className = 'faux__select__item';
+              li.dataset.breakpoint = breakpoint;
+
+              // Add a span to make the text separate from the button
+              li.innerHTML = `<span class="preset__name">${name} - ${breakpoint}px</span>
+                              <button class="faux__select__item__remove">Remove</button>`;
+
+              // Click event to select a preset
+              li.querySelector('.preset__name').addEventListener('click', function() {
+                  selectPreset(name, breakpoint);
+              });
+
+              // Click event to remove a preset
+              li.querySelector('.faux__select__item__remove').addEventListener('click', function(event) {
+                  event.stopPropagation(); // Prevent triggering preset selection
+                  removeBreakpoint(breakpoint);
+              });
+
+              fauxSelectList.appendChild(li);
+          });
+      }
+
+      // Check if input value matches any preset, otherwise reset button text
+      validateSelectedPreset();
+  }
+
+  // Select a preset and update localStorage + input field + button text
+  function selectPreset(name, breakpoint) {
+      localStorage.setItem('breakpoint', breakpoint);
+      breakpointInput.value = breakpoint;
+      fauxSelectTrigger.textContent = name; // Update button text
+      calculateOutput();
+  }
+
+  // Check if the input field matches any preset, otherwise reset button text
+  function validateSelectedPreset() {
+      let breakpoints = JSON.parse(localStorage.getItem('breakpoint_presets')) || [];
+      let currentValue = parseInt(breakpointInput.value, 10);
+
+      let matchedPreset = breakpoints.find(b => b.breakpoint === currentValue);
+
+      if (matchedPreset) {
+          fauxSelectTrigger.textContent = matchedPreset.name; // Set button text if matched
+      } else {
+          fauxSelectTrigger.textContent = 'None'; // Reset if no match
+      }
+  }
+
+  // Save new breakpoint preset
+  function saveBreakpoint() {
+    const name = breakpointNameInput.value.trim();
+    const breakpoint = parseInt(breakpointValueInput.value.trim(), 10);
+
+    if (!name || isNaN(breakpoint)) return; // Ensure valid input
+
+    let breakpoints = JSON.parse(localStorage.getItem('breakpoint_presets')) || [];
+    breakpoints.push({ name, breakpoint });
+
+    localStorage.setItem('breakpoint_presets', JSON.stringify(breakpoints));
+
+    // Clear input fields
+    breakpointNameInput.value = '';
+    breakpointValueInput.value = '';
+
+    loadBreakpoints();
+  }
+
+  // Remove breakpoint from storage and update UI
+  function removeBreakpoint(value) {
+      let breakpoints = JSON.parse(localStorage.getItem('breakpoint_presets')) || [];
+      breakpoints = breakpoints.filter(b => b.breakpoint !== value);
+
+      localStorage.setItem('breakpoint_presets', JSON.stringify(breakpoints));
+      loadBreakpoints(); // Reload the list and update button text if needed
+  }
+
+  // Event listener for adding a new breakpoint
+  addButton.addEventListener('click', saveBreakpoint);
+
+  // Load stored breakpoints on page load
+  loadBreakpoints();
 
   // get local storage
   if(localStorage.getItem('breakpoint')) {
@@ -50,9 +159,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // set local storage
+  // Listen for manual changes to the input field and validate selection
   breakpointInput.addEventListener('input', function() {
       localStorage.setItem('breakpoint', breakpointInput.value);
+      validateSelectedPreset();
       calculateOutput();
   });
   unitSelect.addEventListener('change', function() {

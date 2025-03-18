@@ -54,7 +54,8 @@ h1 {
 
 input,
 select,
-button {
+button,
+li.faux__select__item {
   font-size: clamp(16px, 2.78vw, 20px);
   margin: 0;
   padding: clamp(10px, 2.78vw, 20px);
@@ -62,6 +63,18 @@ button {
   color: #ffffff;
   font-weight: 400;
   border: 0;
+}
+
+li.faux__select__item {
+  margin-bottom: clamp(10px, 2.78vw, 20px);
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  align-items: center;
+}
+
+li.faux__select__item .preset__name {
+  padding: clamp(10px, 2.78vw, 20px);
 }
 
 input,
@@ -79,7 +92,8 @@ button#copy-result:focus {
   outline: 4px dotted var(--mellow-yellow);
 }
 
-button:hover {
+button:hover,
+li.faux__select__item  {
   cursor: pointer;
 }
 
@@ -191,5 +205,63 @@ code {
 
 .readmore__open .readmore__content {
   display: block;
+}
+
+.faux__select {
+  flex: 1 1 200px;
+  position: relative;
+}
+
+.faux__select__trigger {
+  width: 100%;
+  text-align: left;
+}
+
+.faux__select__form {
+  background-color: var(--mellow-purple);
+  padding: clamp(10px, 2.78vw, 20px);
+  width: 100%;
+  position: absolute;
+  display: none;
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.faux__select__open .faux__select__form  {
+  display: block;
+}
+
+.faux__select__form button,
+.faux__select__form input {
+  font-size: clamp(14px, 0.22vw, 16px);
+  padding: clamp(4px, 0.14vw, 10px);
+  background-color: #ffffff;
+  color: var(--mellow-purple-dark);
+  font-weight: 200;
+  border: 0;
+}
+
+.breakpoint__list__add {
+  display: flex;
+  flex-direction: row;
+}
+
+.breakpoint__list__add label {
+  font-size: clamp(14px, 0.22vw, 16px);
+  padding: clamp(4px, 0.14vw, 10px) 0;
+}
+
+.breakpoint__list__add__formitem {
+  margin-right: clamp(8px, 0.28vw, 20px);
+}
+
+.breakpoint__list__add__formitem:nth-last-child(1) {
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.faux__select__item__remove {
+  margin-left: auto;
+  margin-right: clamp(10px, 2.78vw, 20px);
 }
 
