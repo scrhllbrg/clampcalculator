@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Instantly generate CSS clamp() values for fluid typography, responsive padding, and flexible margins. No more media queries – create scalable designs effortlessly!">
+    <meta name="description" content="Instantly generate CSS clamp() values for fluid typography, responsive padding and flexible margins. No more media queries – create scalable designs quickly!">
     <meta name="keywords" content="CSS Clamp, Clamp Calculator, Clamp Generator, Responsive Design, Web Development">
     <meta name="author" content="Happiness">
     <link rel="canonical" href="https://clamp.hpns.dev">
     <link rel="stylesheet" href="reset.css?v=1.6">
-    <link rel="stylesheet" href="clampcalculator.css?v=1.52">
+    <link rel="stylesheet" href="clampcalculator.css?v=1.53">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -17,7 +17,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8e7cc3">
     <meta name="msapplication-TileColor" content="#8e7cc3">
     <meta name="theme-color" content="#ffffff">
-    <title>CSS Clamp Calculator – Instantly Generate Responsive clamp() Values</title>
+    <title>CSS Clamp Calculator – Generate Responsive clamp() Values</title>
     <meta itemprop="name" content="Clamp Calculator">
     <meta itemprop="description" content="Use the Clamp Calculator to dynamically calculate and generate CSS clamp values for responsive design. Perfect for setting scalable sizes, margins and paddings.">
     <meta itemprop="image" content="http://clamp.hpns.dev/img/clamp_calculator.png">
@@ -101,7 +101,7 @@
                     <span class="preset__name">No items added</span>
                   </li>
                 </ul>
-                <div class="breakpoint__list__add">
+                <form class="breakpoint__list__add">
                   <div class="breakpoint__list__add__formitem">
                     <label for="breakpoint__name">Project name:</label>
                     <input type="text" id="breakpoint__name" name="breakpoint__name">
@@ -111,9 +111,9 @@
                     <input type="number" id="breakpoint__value" name="breakpoint__value" min="320" max="10000">
                   </div>
                   <div class="breakpoint__list__add__formitem">
-                    <button class="btn_small" aria-label="Add clamp preset">Add</button>
+                    <button type="submit" class="btn_small" aria-label="Add clamp preset">Add</button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -202,11 +202,11 @@
               <p>This generator/calculator is as simplified as possible. Ease of use and good workflow are of essence. It assumes you already have the max and min values in place and want to get the dynamic value from the max value to smoothly scale the content.</p>
               <p>The idea is to use the CSS Clamp Calculator to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.</p>
               <img src="./img/clamp_calculator.webp" alt="Clamp Calculator Preview" loading="lazy">
-              <p>Learn more about how <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" target="_blank" rel="noopener">CSS clamp()</a> works.</p>
+              <p>Learn more about how <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" title="Read more at mozilla.org" target="_blank" rel="noopener">CSS clamp()</a> works.</p>
           </div>
         </div>
       </div>
     </main>
-    <script src="clampcalculator.js?v=1.36"></script>
+    <script src="clampcalculator.js?v=1.40"></script>
   </body>
 </html>
