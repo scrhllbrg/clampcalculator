@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - My Website</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Oops! The page you're looking for isn't here. Explore our homepage or use the search function.">
+    <link rel="stylesheet" href="reset.css?v=1.6">
+    <link rel="stylesheet" href="clampcalculator.css?v=1.54">
+</head>
+<body>
+
+        <h1>404</h1>
+    <div class="centered-content centered-content__error">
+        <div class="emoji">😵</div>
+        <p>Oops! The page you’re looking for doesn’t exist.</p>
+        <p>You can go back to our <a href="/">homepage</a> or try searching:</p>
+
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button onclick="searchSite()">Search</button>
+        </div>
+    </div>
+
+    <script>
+        function searchSite() {
+            var query = document.getElementById('search-input').value;
+            if (query) {
+                window.location.href = "https://www.google.com/search?q=site:clamp.hpns.dev+" + encodeURIComponent(query);
+            }
+        }
+    </script>
+
+</body>
+</html>

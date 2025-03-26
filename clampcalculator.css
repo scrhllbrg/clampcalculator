@@ -59,6 +59,8 @@ h1 {
 
 .disclaimer a {
   color: var(--mellow-purple-darker);
+  margin: 0 0 0.6rem 0;
+  display: inline-block;
 }
 
 .centered-content {
@@ -283,7 +285,8 @@ code {
   transition: max-height 0.3s ease-out;
 }
 
-.readmore__content a {
+.readmore__content a,
+.full__content a {
   color: #ffffff;
 }
 
