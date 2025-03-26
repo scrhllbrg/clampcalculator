@@ -209,31 +209,41 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// readmore
+// Readmore Toggle Script
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.readmore__switch').forEach(function(element) {
-      if (!element.hasAttribute('tabindex')) {
-          element.setAttribute('tabindex', '0');
-      }
+    document.querySelectorAll('.readmore__switch').forEach(function(element) {
+        if (!element.hasAttribute('tabindex')) {
+            element.setAttribute('tabindex', '0');
+        }
 
-      element.addEventListener('click', function() {
-          toggleReadmore(this);
-      });
+        // Ensure `aria-expanded` exists
+        if (!element.hasAttribute('aria-expanded')) {
+            element.setAttribute('aria-expanded', 'false');
+        }
 
-      element.addEventListener('keydown', function(event) {
-          // Check if Enter key is pressed
-          if (event.key === 'Enter' || event.keyCode === 13) {
-              toggleReadmore(this);
-          }
-      });
-  });
+        // Ensure `aria-controls` exists and points to the target content
+        const targetId = element.getAttribute('data-target');
+        if (targetId) {
+            element.setAttribute('aria-controls', targetId);
+        }
 
-  function toggleReadmore(element) {
-      var closestParent = element.closest('.readmore');
-      if (closestParent) {
-          closestParent.classList.toggle('readmore__open');
-      }
-  }
+        element.addEventListener('click', function() {
+            toggleReadmore(this);
+        });
+
+        element.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.keyCode === 13) {
+                toggleReadmore(this);
+            }
+        });
+    });
+
+    function toggleReadmore(element) {
+        var closestParent = element.closest('.readmore');
+        if (closestParent) {
+            const isExpanded = element.getAttribute('aria-expanded') === 'true';
+            element.setAttribute('aria-expanded', !isExpanded);
+            closestParent.classList.toggle('readmore__open', !isExpanded);
+        }
+    }
 });
-
-

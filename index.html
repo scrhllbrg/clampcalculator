@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Instantly generate CSS clamp() values for fluid typography, responsive padding and flexible margins. No more media queries – create scalable designs quickly!">
+    <meta name="description" content="Use the Clamp() Calculator for responsive design with dynamic CSS clamp values. Easily set scalable sizes, margins & paddings, and save project presets.">
     <meta name="keywords" content="CSS Clamp, Clamp Calculator, Clamp Generator, Responsive Design, Web Development">
     <meta name="author" content="Happiness">
-    <link rel="canonical" href="https://clamp.hpns.dev">
+    <link rel="canonical" href="https://clamp.hpns.dev/">
     <link rel="stylesheet" href="reset.css?v=1.6">
-    <link rel="stylesheet" href="clampcalculator.css?v=1.53">
+    <link rel="stylesheet" href="clampcalculator.css?v=1.62">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -17,18 +17,18 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8e7cc3">
     <meta name="msapplication-TileColor" content="#8e7cc3">
     <meta name="theme-color" content="#ffffff">
-    <title>CSS Clamp Calculator – Generate Responsive clamp() Values</title>
-    <meta itemprop="name" content="Clamp Calculator">
+    <title>CSS Clamp Calculator – Generate Responsive clamp() Values and preset them</title>
+    <meta itemprop="name" content="CSS Clamp() Calculator">
     <meta itemprop="description" content="Use the Clamp Calculator to dynamically calculate and generate CSS clamp values for responsive design. Perfect for setting scalable sizes, margins and paddings.">
     <meta itemprop="image" content="http://clamp.hpns.dev/img/clamp_calculator.png">
-    <meta property="og:title" content="Clamp Calculator">
-    <meta property="og:site_name" content="CSS Clamp Calculator">
+    <meta property="og:title" content="CSS Clamp() Calculator">
+    <meta property="og:site_name" content="CSS Clamp() Calculator">
     <meta property="og:description" content="Dynamically calculate CSS clamp values for responsive design.">
     <meta property="og:image" content="https://clamp.hpns.dev/img/clamp_calculator.png">
     <meta property="og:url" content="https://clamp.hpns.dev">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Clamp Calculator">
+    <meta name="twitter:title" content="CSS Clamp() Calculator">
     <meta name="twitter:description" content="Dynamically calculate CSS clamp values for responsive design.">
     <meta name="twitter:image" content="https://clamp.hpns.dev/img/clamp_calculator.png">
     <script type="application/ld+json">
@@ -84,6 +84,11 @@
   </head>
   <body>
     <h1>CSS Clamp() Calculator</h1>
+    <div class="sr-only">
+      <p>Create responsive clamp() values for font sizes, spacing, or layout without media queries. Enter a breakpoint and a max value in px or rem.</p>
+      <p>This tool calculates a fluid vw value for use in CSS, e.g.: <code>padding: clamp(1rem, 2.5vw, 3rem);</code></p>
+      <p>Settings are stored in localStorage and with presets for reuse. Fast, simple, and ideal for modern responsive design.</p>
+    </div>
     <main>
       <div class="centered-content">
         <div class="form-group form-group__breakpoint">
@@ -146,36 +151,37 @@
           </div>
         </div>
         <div class="readmore">
-            <div class="readmore__switch" tabindex="0">Usage →</div>
-            <div class="readmore__content">
+            <div id="readmore__switch" role="button" class="readmore__switch" aria-expanded="false" aria-controls="readmore__content"tabindex="0">Usage →</div>
+            <div id="readmore__content" class="readmore__content">
               <h2>Generate Responsive Clamp Values</h2>
 
               <h3>Breakpoint</h3>
               <p>The width of the viewport where you want the max value to be applied.</p>
 
               <h3>Max Value of Clamp</h3>
-              <p>The maximum size, padding, margin, etc. This will be used to determine the value for the dynamic (vw) value of the clamp in relation to the breakpoint.</p>
+              <p>The maximum size, padding, margin, etc. This will be used to determine the value for the dynamic <em>(vw)</em> value of the clamp in relation to the breakpoint.</p>
               <p>Please select the appropriate unit.</p>
 
               <h3>Min Value of Clamp</h3>
-              <p>This calculation does not take into account any minimum values for the clamp.</p>
+              <p><em>This calculation does not take into account any minimum values for the clamp.</em></p>
 
               <h3>New Max Value</h3>
               <ul>
-                <li>Remove the previously entered max value.</li>
+                <li>Removes the previously entered max value.</li>
+                <li>Focuses the <em>max value field</em> for quick access.</li>
                 <li>Start typing or pasting your new max value.</li>
                 <li>The result updates automatically.</li>
-                <li>If unsure, press the <strong>Calculate</strong> button.</li>
+                <li>If unsure, press the <em>Calculate</em> button.</li>
               </ul>
 
               <h3>Result</h3>
-              <p>The calculated dynamic mid-value of the clamp in vw. The MINVALUE and MAXVALUE should be defined statically in px/rem.</p>
+              <p>The calculated dynamic mid-value of the clamp in <em>vw</em>. The MINVALUE and MAXVALUE should be defined statically in px/rem.</p>
               <code>
               padding: clamp(MINVALUE, RESULT, MAXVALUE);
               </code>
 
               <h3>Copy Button</h3>
-              <p>Copies just what you need to quickly paste the dynamic value into your IDE of choice.</p>
+              <p>Copies just what you need to <em>quickly paste the dynamic value</em> into your IDE of choice.</p>
 
               <h3>Rem Units</h3>
               <p>Assumes the value of rem is set to be 10% of the px size.</p>
@@ -192,21 +198,44 @@
               </code>
 
               <h3>Local Storage</h3>
-              <p>This clamp generator/calculator utilizes local storage to store the Breakpoint and Unit.</p>
+              <p><em>All data is stored in localStorage on your local machine and not sent anywhere</em></p>
 
-              <h3>Presets</h3>
-              <p>Presets can be stored to local storage, and loaded or removed from it.</p>
+              <h4>Current settings</h4>
+              <p>This clamp generator/calculator utilises localStorage to store the <em>Breakpoint</em> and <em>Unit</em>.</p>
+
+              <h4>Presets</h4>
+              <p>Presets for <em>Breakpoint</em> can be stored to localStorage, and loaded or removed from it.</p>
+
+              <h3>FAQ (Frequently Asked Questions)</h3>
+              <dl>
+                <dt>What is CSS clamp?</dt>
+                <dd>CSS clamp() is a function that allows elements to scale between a minimum and maximum value based on viewport size.</dd>
+
+                <dt>How does the CSS Clamp Calculator work?</dt>
+                <dd>The Clamp Calculator generates CSS clamp() values dynamically based on your input for breakpoints and max values, helping you create flexible, responsive designs.</dd>
+
+                <dt>How can I use CSS clamp()?</dt>
+                <dd>Use clamp() for font sizes, margins, paddings, and other CSS properties to create fluid designs without media queries.</dd>
+              </dl>
 
               <h3>About This Tool</h3>
               <p>The designer provides designs for desktop and mobile devices only. That is fine these days. Just use CSS clamp to scale the items to fit the various screen sizes. Gone are the numerous @media queries at seemingly random places.</p>
               <p>This generator/calculator is as simplified as possible. Ease of use and good workflow are of essence. It assumes you already have the max and min values in place and want to get the dynamic value from the max value to smoothly scale the content.</p>
               <p>The idea is to use the CSS Clamp Calculator to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.</p>
-              <img src="./img/clamp_calculator.webp" alt="Clamp Calculator Preview" loading="lazy">
-              <p>Learn more about how <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" title="Read more at mozilla.org" target="_blank" rel="noopener">CSS clamp()</a> works.</p>
+              <h3>Demo of CSS Clamp()</h3>
+              <p>A basic demo of using CSS Clamp() with variables <strong>(and css grid without media queries)</strong> is found at <a href="https://codepen.io/Oscar-Hallberg/pen/qEBoawz" title="Codepen demo" target="_blank" rel="noopener">Codepen: CSS Clamp(); responsive without @media</a>.</p>
+              <p>You will be able to see how the values changes with the viewport width and get a general understanding of the perks with CSS Clamp().</p>
+              <img src="./img/codepen__css_clamp.webp" alt="Codepen Clamp Calculator Preview" loading="lazy">
+              <h3>MDN Web Docs specification</h3>
+              <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" title="Read more at mozilla.org" target="_blank" rel="noopener">specification</a> and how the CSS clamp()function works.</p>
           </div>
         </div>
       </div>
     </main>
-    <script src="clampcalculator.js?v=1.40"></script>
+    <div class="disclaimer">
+      CSS clamp() calculator from
+      <a href="https://www.happiness.se/" title="Visit happiness.se" target="_blank" rel="noopener">Happiness</a> – built for development, not ads.
+    </div>
+    <script src="clampcalculator.js?v=1.42"></script>
   </body>
 </html>

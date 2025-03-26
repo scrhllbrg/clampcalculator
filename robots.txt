@@ -1,16 +1,7 @@
 User-agent: *
 Disallow:
 
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
 # Allow all search engines to crawl everything (since it's a public tool)
 
-# Sitemap (if you have one)
+# Sitemap
 Sitemap: https://clamp.hpns.dev/sitemap.xml
