@@ -9,10 +9,12 @@ sitemap.xml
 site.webmanifest
 browserconfig.xml
 
-# Static pages not needed on GitHub
+# Static asssets not needed on GitHub
 index.html
 404.html
 about.html
+clampcalculator_web.css
+clampcalculator_web.js
 
 # Favicons and platform-specific icons
 favicon.ico
