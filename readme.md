@@ -63,12 +63,15 @@ This generator/calculator is as simplified as possible. Ease of use and good wor
 
 The idea is to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.
 
+## General and simple css clamp() demo
+
+Check out how css clamp() works at this codepen:
+https://codepen.io/Oscar-Hallberg/pen/qEBoawz
+
+
 ## Try It Online
 
 A fully featured, fast, and completely free version of this tool is available at:
 https://clamp.hpns.dev/
-
-Check out how css clamp() works at this codepen:
-https://codepen.io/Oscar-Hallberg/pen/qEBoawz
 
 No signups, no bloat, no data scraped — just a focused tool that does one thing well.
