@@ -69,7 +69,7 @@ Check out how css clamp() works at this codepen:
 https://codepen.io/Oscar-Hallberg/pen/qEBoawz
 
 
-## Try It Online
+## Public Version
 
 A fully featured, fast, and completely free version of this tool is available at:
 https://clamp.hpns.dev/
