@@ -63,6 +63,8 @@ This generator/calculator is as simplified as possible. Ease of use and good wor
 
 The idea is to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.
 
+The tool is built with 100% vanilla HTML, CSS, and JS — no frameworks, no dependencies. It's fully static and easy to modify or extend using any preprocessor or frontend stack you prefer.
+
 ## General and simple css clamp() demo
 
 Check out how css clamp() works at this codepen:
