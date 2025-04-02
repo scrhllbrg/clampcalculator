@@ -68,4 +68,7 @@ The idea is to build clamps in the IDE of choice rather than pasting each value 
 A fully featured, fast, and completely free version of this tool is available at:
 https://clamp.hpns.dev/
 
+Check out how css clamp() works at this codepen:
+https://codepen.io/Oscar-Hallberg/pen/qEBoawz
+
 No signups, no bloat, no data scraped — just a focused tool that does one thing well.
