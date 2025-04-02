@@ -1,45 +1,60 @@
 # CSS Clamp() Calculator
 
----
-
-This tool helps you generate responsive CSS `clamp()` values with ease — no media queries, no guesswork.
+A focused, dependency-free tool to generate responsive CSS `clamp()` values — no media queries, no guesswork.
 
 ![Screenshot of the Clamp Calculator](img/clamp_calculator.webp)
 
-It’s designed for modern workflows where you already know your min and max values and just want the dynamic part calculated quickly. Whether you're working with `padding`, `font-size`, or other fluid properties, this calculator gives you the precise `vw`-based value that scales smoothly between your defined limits.
+## Public Version
 
-Unlike many generators, this one assumes you prefer working directly in your IDE. Enter values, get the dynamic part, and paste it into your code — simple, clean, and fast.
+A fully featured, fast, and completely free version is available at:
+https://clamp.hpns.dev/
 
-This tool intentionally uses plain `vw` values, valuing simplicity over subpixel-perfect precision at breakpoints.
+No signups, no bloat, no data scraped — just a tool that does one thing.
 
-## Breakpoint
-The width of the viewport where you want the max value to be applied.
+## What It Does
 
-## Max Value of Clamp
-The maximum size, padding, margin, etc. This will be used to determine the value for the dynamic (vw) value of the clamp in relation to the breakpoint.
+This tool helps you generate fluid, viewport-based `clamp()` values for properties like font-size, padding, margin, or any other responsive unit.
+
+It's designed for modern workflows where you already know your min and max values and just want the dynamic middle part calculated quickly. It intentionally uses plain `vw` values, valuing simplicity over subpixel-perfect breakpoint precision.
+
+Unlike other generators, this one assumes you prefer working directly in your IDE — quick, editable, and keyboard-first.
+
+## Key Concepts
+
+### Breakpoint
+
+The viewport width where your max value should be applied.
+
+### Max Value of Clamp
+
+The largest value the property should reach at or above the breakpoint. This is used to determine the dynamic `vw` value.
 
 Please select the appropriate unit.
 
-## Min Value of Clamp
-This calculation does not take into account any minimum values for the clamp.
+### Min Value of Clamp
 
-## New Max Value
-Remove the previously entered max value and immediately start typing/pasting your new max value. The result will be automatically updated as you type. (Whenever in doubt, press the button that says "Calculate".)
+This tool does not calculate a minimum value. You provide it separately when using the `clamp()` function.
 
-## Result
-The calculated dynamic mid-value of the clamp in vw. The MINVALUE and MAXVALUE should be defined statically in px/rem.
+### New Max Value
 
-```
+Remove the previously entered max value and immediately start typing or pasting your new max value. The result will update automatically. You can also press the "Calculate" button if needed.
+
+### Result
+
+The calculated `vw`-based middle value. Your CSS will look something like this:
+
+```css
 padding: clamp(MINVALUE, RESULT, MAXVALUE);
 ```
 
-## Copy Button
-Copies just what you need to quickly paste the dynamic value into your IDE of choice.
+## Features
+### Copy Button
+Click once to copy just the vw value, ready to paste into your CSS.
 
-## Rem Units
-Assumes the value of rem is set to be 10% of the px size.
+### Rem Units
+The calculator assumes 1rem = 10px by setting the HTML font size to 62.5%.
 
-```
+```css
 html {
   font-size: 62.5%;
   position: relative;
@@ -50,30 +65,23 @@ body {
 }
 ```
 
-## Local Storage
-This clamp generator/calculator utilises local storage to store the Breakpoint and Unit.
-
-## Presets
-Presets can be stored to local storage, and loaded or removed from it.
+### Local Storage and Presets
+The calculator uses local storage to remember your most recent settings, including breakpoint, unit, and presets. Presets can be stored, loaded, or removed as needed.
 
 ## About This Tool
-The designer provides designs for desktop and mobile devices only. That is fine these days. Just use CSS clamp to scale the items to fit the various screen sizes. Gone are the numerous @media queries at seemingly random places.
+Many modern designs are delivered with only desktop and mobile variants. That’s perfectly fine. Use clamp() to scale components fluidly between these sizes, replacing countless @media queries.
 
-This generator/calculator is as simplified as possible. Ease of use and good workflow are of essence. It assumes you already have the max and min values in place and want to get the dynamic value from the max value to smoothly scale the content.
+This generator is as simplified as possible. Ease of use and a fast workflow are the priority. It assumes you already have your min and max values and just need the dynamic value for scaling.
 
-The idea is to build clamps in the IDE of choice rather than pasting each value to get a full line of CSS from this tool. It could be argued that it is quicker to use a keyboard to enter values than copy-pasting multiple values into fields.
+The idea is to build clamps in your IDE rather than generating full CSS lines repeatedly. In many cases, it’s faster to use your keyboard to enter the known values and paste in just the vw portion.
 
-The tool is built with 100% vanilla HTML, CSS, and JS — no frameworks, no dependencies. It's fully static and easy to modify or extend using any preprocessor or frontend stack you prefer.
+### Tech Stack
+The tool is built with 100% vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies. It’s a fully static site and easy to modify or extend using any preprocessor or frontend stack of your choice.
 
-## General and simple css clamp() demo
-
-Check out how css clamp() works at this codepen:
+### CSS Clamp Demo
+A simple demo of how clamp() works is available here:
 https://codepen.io/Oscar-Hallberg/pen/qEBoawz
 
-
-## Public Version
-
-A fully featured, fast, and completely free version of this tool is available at:
-https://clamp.hpns.dev/
-
-No signups, no bloat, no data scraped — just a focused tool that does one thing well.
+### Source
+The source code for this project is available at:
+https://github.com/scrhllbrg/clampcalculator
