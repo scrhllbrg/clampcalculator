@@ -1,0 +1,33 @@
+# Development and host-specific folders
+.ddev/
+.nova/
+
+# Config files
+.htaccess
+robots.txt
+sitemap.xml
+site.webmanifest
+browserconfig.xml
+
+# Static pages not needed on GitHub
+index.html
+404.html
+about.html
+
+# Favicons and platform-specific icons
+favicon.ico
+favicon-16x16.png
+favicon-32x32.png
+apple-touch-icon.png
+android-chrome-192x192.png
+android-chrome-512x512.png
+mstile-70x70.png
+mstile-144x144.png
+mstile-150x150.png
+mstile-310x150.png
+mstile-310x310.png
+safari-pinned-tab.svg
+
+# Images specific to branding or presentation
+img/codepen__css_clamp.png
+img/codepen__css_clamp.webp
