@@ -1,0 +1,31 @@
+name: Deploy Clamp Calculator
+
+on:
+  push:
+    branches: [github]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Create redirecting index.html
+        run: |
+          echo '<!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta http-equiv="refresh" content="0; url=clampcalculator.html">
+            <title>Redirecting…</title>
+          </head>
+          <body>
+            <p>If you are not redirected, <a href="clampcalculator.html">click here</a>.</p>
+          </body>
+          </html>' > index.html
+
+      - name: Push to GitHub Pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
